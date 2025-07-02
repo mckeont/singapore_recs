@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Singapore Family Map</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map').setView([1.29, 103.85], 12);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data © OpenStreetMap contributors'
+  }).addTo(map);
+
+  const places = [
+    {
+      name: "Botanical Garden",
+      lat: 1.31575004351352,
+      lng: 103.81606577434009,
+      description: "Must-see tropical garden with lakes, a treetop walk, and a kids’ area."
+    },
+    {
+      name: "Maxwell Food Centre",
+      lat: 1.28049962224980,
+      lng: 103.84475559734967,
+      description: "Iconic hawker centre. Try Hainanese chicken rice at Tian Tian."
+    },
+    {
+      name: "Sri Mariamman Temple",
+      lat: 1.28274323391120,
+      lng: 103.84520784848131,
+      description: "Historic Hindu temple in Chinatown."
+    },
+    {
+      name: "Sands Expo & Convention Centre",
+      lat: 1.28225491392149,
+      lng: 103.85875230079937,
+      description: "Indoor mall near the Marina Bay. Water show in the evening."
+    },
+    {
+      name: "Sri Veeramakaliamman Temple",
+      lat: 1.30809841427181,
+      lng: 103.85262393545486,
+      description: "In the heart of Little India."
+    },
+    {
+      name: "Durian 36",
+      lat: 1.31419060009689,
+      lng: 103.88840723856364,
+      description: "Try different varieties of durian here."
+    },
+    {
+      name: "Singapore Flyer",
+      lat: 1.28933221014278,
+      lng: 103.86320663672632,
+      description: "Massive observation wheel with panoramic views."
+    },
+    {
+      name: "Sentosa Island",
+      lat: 1.24940440185921,
+      lng: 103.83032144075597,
+      description: "Family resort island with beaches, aquarium, theme parks, zip lines, more."
+    },
+    {
+      name: "Tian Tian Hainanese Chicken Rice",
+      lat: 1.2807,
+      lng: 103.8448,
+      description: "Famous chicken rice stall, affordable and delicious."
+    }
+  ];
+
+  places.forEach(place => {
+    L.marker([place.lat, place.lng])
+      .addTo(map)
+      .bindPopup(`<strong>${place.name}</strong><br>${place.description}`);
+  });
+</script>
+
+</body>
+</html>
